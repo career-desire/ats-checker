@@ -1,0 +1,163 @@
+.dashboard-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.dashboard-head {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgb(84, 84, 84);
+    padding: 3rem 0;
+    position: relative;
+    transition: all 1s ease-in-out;
+}
+
+.close {
+    position: absolute;
+    left: -1000px;
+}
+
+.dashboard-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgb(84, 84, 84);
+    cursor: pointer;
+    margin-top: 3rem;
+    padding-top: 20px;
+}
+
+.dashboard-menu>p:hover {
+    color: #1453A1;
+}
+
+.dashboard-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow: auto;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.total-users {
+    margin-top: 20px;
+    padding: 40px;
+    text-align: center;
+    border-radius: 26px;
+    background: #1453A1;
+    transition: all 0.5s ease-in-out;
+}
+
+.dashboard-img {
+    margin-top: 1rem;
+    width: 50%;
+}
+
+
+.hamburger-menu {
+    font-size: 1.3rem;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    transition: all 2s ease-in-out;
+}
+
+.cd-logo {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.log-out-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.db-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 20px;
+    overflow: auto;
+}
+
+td,th{
+    max-width: 1000px;
+}
+
+.slide-right {
+    -webkit-animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.slide-bottom {
+    -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-200px);
+        transform: translateX(-200px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-200px);
+        transform: translateX(-200px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@-webkit-keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-100px);
+        transform: translateY(-100px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-100px);
+        transform: translateY(-100px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
