@@ -20,7 +20,7 @@ function Loader({ loading, LoaderReport }) {
           autoplay
         />
         <div className='loader-report'>
-          {LoaderReport ? <h3>{LoaderReport}</h3> : <h3>Analysing...</h3>}
+          {LoaderReport ? <h3>{`${LoaderReport} . . .`}</h3> : <h3>Analysing . . .</h3>}
           <div className="loader"></div>
         </div>
       </div>

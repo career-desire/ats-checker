@@ -9,7 +9,10 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Alert from "@mui/material/Alert";
 import NavBar from "./components/NavBar";
+<<<<<<< HEAD
 import "./css/Animation.css"
+=======
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
 
 // Main component for the app
 function App() {
@@ -25,8 +28,11 @@ function App() {
   const [userId, setUserId] = useState(); // Stores the user's ID
   const [useRecentFile, setUseRecentFile] = useState(false); // Flag for using recent file
   const [useRecentDescription, setUseRecentDescription] = useState(false); // Flag for using recent description
+<<<<<<< HEAD
   const [isDark, setIsDark] = useState('true');
   const [LoaderReport, setLoaderReport] = useState('');
+=======
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
 
   const token = localStorage.getItem("token"); // Retrieves JWT token from session storage
 
@@ -46,6 +52,7 @@ function App() {
     }, 3000);
   }, []);
 
+<<<<<<< HEAD
   const handleLoaderReport = () => {
     const loaderReportArr = [
       "Gathering your data",
@@ -68,6 +75,8 @@ function App() {
   };
   
 
+=======
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
   // Function to process Generative AI
   const processGenerativeAI = useCallback(
     async (text) => {
@@ -81,7 +90,10 @@ function App() {
         // Fetch cached resume and description from localStorage
         const cachedResume = localStorage.getItem("resume");
         const cachedDescription = localStorage.getItem("description");
+<<<<<<< HEAD
         // const cachedReport = localStorage.getItem("report");
+=======
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
 
         // If the text or description has changed, generate new content
         if (text !== cachedResume || description !== cachedDescription) {
@@ -97,7 +109,14 @@ function App() {
 
             const saveResult = await saveToDatabase(responseText, userId); // Save report to database
             if (saveResult) {
+<<<<<<< HEAD
               handleLoaderReport()
+=======
+              setTimeout(() => {
+                navigate("/report"); // Navigate to report page
+                handleSuccess("Resume report generated successfully.");
+              }, 4000);
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
             } else {
               handleError("Failed to save resume to database.");
             }
@@ -105,7 +124,14 @@ function App() {
             handleError("No content available in the response.");
           }
         } else {
+<<<<<<< HEAD
           handleLoaderReport()
+=======
+          setTimeout(() => {
+            navigate("/report"); // Navigate to report page if no changes
+            handleSuccess("Resume report generated successfully.");
+          }, 4000);
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
           setDescription(""); // Clear description
         }
       } catch (error) {
@@ -147,7 +173,10 @@ function App() {
             const result = await response.json();
             await processGenerativeAI(result.text); // Process Generative AI with new file
           } else {
+<<<<<<< HEAD
             console.log(response)
+=======
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
             handleError("Failed to extract text.");
           }
         } catch (error) {
@@ -310,6 +339,7 @@ function App() {
     }
   }, [success, error, token]);
 
+<<<<<<< HEAD
   useEffect(() => {
     const body = document.getElementsByTagName("body")[0]; // Get the body element
     if (isDark === "true") {
@@ -327,6 +357,8 @@ function App() {
     }
   };
 
+=======
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
   return (
     <div className="App">
       {success && (
@@ -349,7 +381,11 @@ function App() {
           {error} {/* Display error message */}
         </Alert>
       )}
+<<<<<<< HEAD
       <NavBar  setSuccess={setSuccess} isDark={isDark} setIsDark={setIsDark}/> {/* Navigation bar component */}
+=======
+      <NavBar /> {/* Navigation bar component */}
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
       <Routes>
         {/* Define routes for different components */}
         <Route
@@ -365,6 +401,7 @@ function App() {
               useRecentDescription={useRecentDescription}
               setUseRecentDescription={setUseRecentDescription}
               token={token}
+<<<<<<< HEAD
               isDark={isDark}
               handleFileChange={handleFileChange}
             />
@@ -372,6 +409,13 @@ function App() {
         />
         <Route path="/report" element={<Report token={token} isDark={isDark}/>} />
         <Route path="/loader" element={<Loader loading={loading} LoaderReport={LoaderReport}/>} />
+=======
+            />
+          }
+        />
+        <Route path="/report" element={<Report token={token} />} />
+        <Route path="/loader" element={<Loader loading={loading} />} />
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
         <Route
           path="/register"
           element={<Register setSuccess={setSuccess} setError={setError} />}

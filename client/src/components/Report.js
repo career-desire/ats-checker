@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Report.css";
@@ -10,18 +11,35 @@ function Report({ token, isDark }) {
   const pdfPath = localStorage.getItem("resumePath");
 
   const navigate = useNavigate();
+=======
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../css/Report.css";
+import Tick from "../assets/tick.png";
+import Wrong from "../assets/wrong.png";
+import { useNavigate } from "react-router-dom";
+
+function Report({ token }) {
+  const navigate = useNavigate(); // Hook for navigation
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
   const [report, setReport] = useState({
     checkList: {},
     matchingDetails: {},
     summary: "No report data available.",
     suggestions: "",
   });
+<<<<<<< HEAD
   const [animatedScore, setAnimatedScore] = useState(0);
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+=======
+
+  const [loadedItems, setLoadedItems] = useState([]);
+  const [animatedScore, setAnimatedScore] = useState(0); // State to animate the score
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
 
   useEffect(() => {
     const storedReportData = localStorage.getItem("report");
@@ -29,25 +47,59 @@ function Report({ token, isDark }) {
     if (storedReportData && token) {
       setReport(JSON.parse(storedReportData));
     } else {
+<<<<<<< HEAD
       navigate("/");
     }
   }, [token, navigate]);
 
   useEffect(() => {
+=======
+      setReport({
+        checkList: {},
+        matchingDetails: {},
+        summary: "No report data available.",
+        suggestions: "",
+      });
+      navigate('/');
+    }
+  }, [token]);
+
+  useEffect(() => {
+    const checklistKeys = Object.keys(report.checkList);
+    checklistKeys.forEach((item, index) => {
+      setTimeout(() => {
+        setLoadedItems((prevItems) => [...prevItems, item]);
+      }, index * 200);
+    });
+  }, [report.checkList]);
+
+  // Animate the score count-up effect
+  useEffect(() => {
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
     if (report.matchingDetails.overallScore) {
       let score = 0;
       const interval = setInterval(() => {
         if (score < report.matchingDetails.overallScore) {
+<<<<<<< HEAD
           score += 1;
           setAnimatedScore(score);
         } else {
           clearInterval(interval);
         }
       }, 40);
+=======
+          score += 1; // Increase the score gradually
+          setAnimatedScore(score);
+        } else {
+          clearInterval(interval); // Clear interval when target score is reached
+        }
+      }, 40); // Adjust speed of count-up
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
     }
   }, [report.matchingDetails.overallScore]);
 
   return (
+<<<<<<< HEAD
     <section className="report-page" ref={componentRef}>
       <aside className=" aside-report-section">
         <h1 className="animate__animated animate__fadeInDown">
@@ -113,6 +165,67 @@ function Report({ token, isDark }) {
               className="suggestions-section animate__animated animate__fadeInUp checklist"
               id={isDark === "true" ? "dark-suggestions-section" : "non-dark"}
             >
+=======
+    <section className="report-page">
+      <h1 className="animate__animated animate__fadeInDown">Your Resume Report</h1>
+      <section className="report-sections">
+        {/* Total Score Section with Animation */}
+        <div className="total-score">
+          <div className="progress-circle" style={{ "--progress": `${animatedScore}%` }}>
+            <p>{animatedScore}</p> {/* Display animated score */}
+            <p>Score</p>
+          </div>
+        </div>
+
+        {/* Overall Report */}
+        <div className="overall-report">
+          <p className="readability puff-in-center">
+            <strong>Readability:</strong>{" "}
+            <span>{report.matchingDetails.readability || "N/A"}</span>
+          </p>
+          <p className="estimated-time puff-in-center">
+            <strong>Estimated reading time:</strong>{" "}
+            <span>{report.matchingDetails.estimatedReadingTime || "N/A"}</span>
+          </p>
+          <p className="action-verb puff-in-center">
+            <strong>Action verbs used:</strong>{" "}
+            <span>{report.matchingDetails.actionVerbsUsed || "N/A"}</span>
+          </p>
+        </div>
+
+        {/* Checklist Section */}
+        <section className="checklist">
+          {Object.entries(report.checkList).map(([key, value], index) => (
+            <div
+              key={key}
+              className={loadedItems.includes(key) ? "loaded" : "loading"}
+            >
+              <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>
+              <div>
+                {value ? (
+                  <>
+                    <p>{value}</p>
+                    <img src={Tick} className="checklist-img" alt="tick" />
+                  </>
+                ) : (
+                  <img src={Wrong} className="checklist-img" alt="wrong" />
+                )}
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* Other Sections */}
+        <div className="other-section">
+          {/* Suggestions Section */}
+          {(
+            report.matchingDetails.educationMissing ||
+            report.matchingDetails.experienceMissing ||
+            report.matchingDetails.keywordsMissing ||
+            report.matchingDetails.skillsMissing
+          ) && (
+            <section className="suggestions-section animate__animated animate__fadeInUp">
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
               <h2>Suggestions (Enhance your resume by adding the following details)</h2>
               {report.matchingDetails.educationMissing && (
                 <p>
@@ -139,6 +252,7 @@ function Report({ token, isDark }) {
                 </p>
               )}
               <p>
+<<<<<<< HEAD
                 <strong>Suggestion:</strong>{" "}
                 <span>{report.suggestions || "No suggestions available."}</span>
               </p>
@@ -162,6 +276,24 @@ function Report({ token, isDark }) {
           style={{ display: "block" }}
         />
       </div>
+=======
+                <strong>Overview:</strong>{" "}
+                <span>{report.suggestions || "No suggestions available."}</span>
+              </p>
+            </section>
+          )}
+
+          {/* Summary Section */}
+          <section className="summary-section animate__animated animate__fadeInUp">
+            <h2>Summary of your resume</h2>
+            <p>{report.summary || "No summary available."}</p>
+          </section>
+        </div>
+      </section>
+      <Link to="/">
+        <button className="btn">Recheck</button>
+      </Link>
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
     </section>
   );
 }

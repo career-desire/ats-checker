@@ -21,6 +21,7 @@
 }
 .nav-btns{
     display: flex;
+<<<<<<< HEAD
     align-items: center;
     justify-content: center;
     gap: 1rem;
@@ -30,6 +31,9 @@
 }
 #dark-nav h4{
     color: #ffffff;
+=======
+    gap: 15px;
+>>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
 }
 @media screen and (max-width: 600px) {
     .cd-logo{
