@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 // Uploader component for handling file uploads and job description input
 function Uploader({
-<<<<<<< HEAD
   handleSubmit,
   description, 
   setDescription, 
@@ -18,17 +17,6 @@ function Uploader({
   token ,
   isDark,
   handleFileChange
-=======
-  handleSubmit, // Function to handle form submission
-  description, // Current job description
-  setDescription, // Function to update the job description
-  handleError, // Function to handle error messages
-  useRecentFile, // Flag indicating if recent file should be used
-  setUseRecentFile, // Function to set recent file flag
-  useRecentDescription, // Flag indicating if recent description should be used
-  setUseRecentDescription, // Function to set recent description flag
-  token // Get token from session storage
->>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
 }) {
   const navigate = useNavigate(); // Hook for navigation
   // Reference to the file input element
@@ -70,17 +58,10 @@ function Uploader({
   };
 
   return (
-<<<<<<< HEAD
     <div className="uploader-page" id={isDark === "true" ? "dark-uploader-page" : "non-dark" }>
       <form id="upload-form" encType="multipart/form-data" onSubmit={onSubmit}>
         <div className="uploading-section animate__animated animate__bounceInLeft">
           <div className="resume-uploader" id={isDark === "true" ? "dark-resume-uploader" : "non-dark" }>
-=======
-    <div id="uploader-page">
-      <form id="upload-form" encType="multipart/form-data" onSubmit={onSubmit}>
-        <div className="uploading-section animate__animated animate__bounceInLeft">
-          <div className="resume-uploader">
->>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
             <label htmlFor="file">
               <h2>Upload a Resume</h2>
             </label>
@@ -91,10 +72,7 @@ function Uploader({
               accept="application/pdf,.doc,.docx,application/msword"
               className="resume-input"
               ref={fileInputRef}
-<<<<<<< HEAD
               onChange={handleFileChange}
-=======
->>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
             />
           </div>
           {/* Recent file section commented out, uncomment if needed */}
@@ -114,10 +92,7 @@ function Uploader({
             <textarea
               placeholder="Paste here"
               className="description-input"
-<<<<<<< HEAD
               id={isDark === "true" ? "dark-description-input" : "non-dark" }
-=======
->>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
               minLength="100"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -140,11 +115,7 @@ function Uploader({
             Get Results
           </button>
         </div>
-<<<<<<< HEAD
         <div className="intro-section animate__animated animate__fadeInRightBig" id={isDark === "true" ? "dark-intro-section" : "non-dark" }>
-=======
-        <div className="intro-section animate__animated animate__fadeInRightBig">
->>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
           <h1>ATS Checker integrated with AI</h1>
           <p>
             Optimize your resume with our ATS Checker—upload your resume, input
@@ -152,7 +123,7 @@ function Uploader({
             of landing the job.
           </p>
           <DotLottieReact
-            src="https://lottie.host/31e886ab-94f4-421f-885e-84d627b3f0fd/tqi5goDjjC.lottie"
+            src="https://lottie.host/25a95a7b-f71e-4c72-95ac-e0972c3fbe2d/Khnho4jRN8.json"
             loop
             autoplay
             className="intro-animation"

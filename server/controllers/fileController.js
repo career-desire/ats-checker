@@ -58,12 +58,7 @@ const extractText = async (filePath, fileType) => {
     return extractedText;
   } catch (error) {
     // Log the error and rethrow it
-<<<<<<< HEAD
     throw "Error extracting text:", error.message || error;
-=======
-    console.error("Error extracting text:", error.message || error);
-    throw error;
->>>>>>> e6a75a2e2d3d167d5524804ee0236afa96df6502
   } finally {
     // Delete the file after processing
     fs.unlink(filePath, (err) => {
