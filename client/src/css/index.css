@@ -236,6 +236,9 @@ a {
   .alert-box{
     font-size: 0.8rem;
   }
+  .loader-page h3{
+    font-size: 0.75rem;
+  }
 }
 
 @media screen and (min-height: 1000px) {
