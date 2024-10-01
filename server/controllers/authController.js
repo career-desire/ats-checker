@@ -1,9 +1,11 @@
-const bcrypt = require("bcrypt");//For encrypt password
-const User = require("../models/user");//User schema
-const { generateToken } = require("../utils/jwtUtils");
-require("dotenv").config();
+import bcrypt from "bcrypt";//For encrypt password
+import User from "../models/user.js";//User schema
+import { generateToken } from "../utils/jwtUtils.js";
+import dotenv from "dotenv";
 
-const register = async (req, res) => {
+dotenv.config();
+
+export const register = async (req, res) => {
   //Getting request from client for register
   const { name, email, password, mobile } = req.body;
 
@@ -39,7 +41,7 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
   //Getting request from client for login
   const { email, password } = req.body;
 
@@ -59,13 +61,11 @@ const login = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = generateToken(user);
-    res.status(200).json({ token, message: "Login successful" });
+    const { token, expiresAt } = generateToken(user);
+    res.status(200).json({ token, expiresAt, message: "Login successful" });
 
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-module.exports = { register, login };

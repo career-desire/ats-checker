@@ -18,7 +18,7 @@ const ChecklistItem = ({ label, value }) => {
             {showMore ? (
               <p>{value}</p>
             ):(
-              <p>{value.length > 50 ? value.slice(0, 50) + "..." : value}</p>
+              <p>{value.length > 50 ? value.slice(0, 50) + " . . ." : value}</p>
             )}
             {value.length > 50 && (
               <button onClick={toggleShowMore}>

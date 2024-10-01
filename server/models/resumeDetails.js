@@ -1,5 +1,5 @@
 //A schema defines the structure and data types of documents in a MongoDB collection, serving as a blueprint for creating and validating data.
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const resumeDetailsSchema = new mongoose.Schema({
   userId: {
@@ -32,6 +32,6 @@ const resumeDetailsSchema = new mongoose.Schema({
   },
 });
 
-const ResumeDetails = mongoose.model("ResumeDetails", resumeDetailsSchema);
+export const ResumeDetails = mongoose.model("ResumeDetails", resumeDetailsSchema);
 
-module.exports = ResumeDetails;
+export default ResumeDetails;

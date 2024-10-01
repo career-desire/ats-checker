@@ -1,45 +1,43 @@
-const ResumeDetails = require("../models/resumeDetails");
+import jwt from 'jsonwebtoken';
+import ResumeDetails from "../models/resumeDetails.js"; // Import ResumeDetails schema
 
-// Controller function to save a resume report
-const saveResumeReport = async (req, res) => {
-  try {
-    // Extract text and userId from request body
-    const { text, userId } = req.body;
-
-    // Check if text is provided
-    if (!text) {
-      return res.status(400).json({ error: "Text is required" });
-    }
-
-    // Create a new ResumeDetails instance with the provided data
-    const newResume = new ResumeDetails({ text, userId });
-
-    // Save the new resume report to the database
-    await newResume.save();
-
-    // Respond with success message
-    res.status(200).json({ message: "Resume report saved successfully" });
-  } catch (error) {
-    // Log and respond with error message in case of failure
-    console.error("Error saving resume report:", error.message || error);
-    res.status(500).json({ error: "Failed to save resume report" });
-  }
-};
-
-// Controller function to get all resume reports
 const getAllResumeReports = async (req, res) => {
   try {
-    // Fetch all resume reports from the database
-    const reports = await ResumeDetails.find();
+    // Extract the token from the Authorization header
+    const token = req.headers.authorization?.split(" ")[1]; // Correctly extract token
+
+    if (!token) {
+      return res.status(401).json({ error: "No token provided" }); // Handle missing token
+    }
+
+    let decodeToken;
+
+    // Verify and decode the JWT token
+    try {
+      decodeToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    } catch (error) {
+      return res.status(403).json({ error: "Invalid or expired token" }); // Handle invalid token
+    }
+
+    let reports;
+
+    if (decodeToken.email === process.env.ADMIN_EMAIL) {
+      // If the user is an admin (by email), fetch all resume reports
+      reports = await ResumeDetails.find();
+    } else {
+      // If the user is not an admin, fetch only their own reports
+      const userId = decodeToken.id; // Get the user ID from the token
+      reports = await ResumeDetails.find({ userId }); // Fetch reports matching this user ID
+    }
 
     // Respond with the fetched reports
     res.status(200).json(reports);
   } catch (error) {
-    // Log and respond with error message in case of failure
+    // Log and respond with an error message in case of failure
     console.error("Error fetching resume reports:", error.message || error);
     res.status(500).json({ error: "Failed to fetch resume reports" });
   }
 };
 
-// Export the controller functions
-module.exports = { saveResumeReport, getAllResumeReports };
+// Export the controller function
+export default getAllResumeReports;

@@ -1,90 +1,163 @@
+/* New Color Palette */
+:root {
+  --primary-color: #1453A1;
+  --secondary-color: #000000;
+  --accent-color: #FF647F;
+  --text-color: #F3F6F9;
+  --light-text-color: #777;
+  --hover-color: #0F3C82;
+  --bg-gradient: linear-gradient(135deg, #1453A1, #FF647F);
+}
+
 .dashboard-section {
-    width: 100%;
-    height: 100vh;
-    display: flex;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: var(--secondary-color);
 }
 
 .dashboard-head {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-right: 1px solid rgb(84, 84, 84);
-    padding: 3rem 0;
-    position: relative;
-    transition: all 1s ease-in-out;
+  width: 20%;
+  background: var(--bg-gradient);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 .close {
-    position: absolute;
-    left: -1000px;
+  position: absolute;
+  left: -1000px;
 }
 
 .dashboard-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.dashboard-profile img {
+  border-radius: 50%;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-profile h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  margin-top: 1rem;
 }
 
 .dashboard-menu {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    border-top: 1px solid rgb(84, 84, 84);
-    cursor: pointer;
-    margin-top: 3rem;
-    padding-top: 20px;
+  width: 100%;
+  margin-top: 3rem;
 }
 
-.dashboard-menu>p:hover {
-    color: #1453A1;
+.dashboard-menu p {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.dashboard-menu p:hover {
+  color: var(--accent-color);
 }
 
 .dashboard-body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    overflow: auto;
-    font-size: 0.9rem;
-    position: relative;
+  flex: 1;
+  padding: 2rem;
+  background: var(--secondary-color);
+  overflow: auto;
+  font-size: 1rem;
+  position: relative;
 }
 
 .total-users {
-    margin-top: 20px;
-    padding: 40px;
-    text-align: center;
-    border-radius: 26px;
-    background: #1453A1;
-    transition: all 0.5s ease-in-out;
+  font-size: 1.5rem;
+  padding: 20px;
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-img {
-    margin-top: 1rem;
-    width: 50%;
+  margin-top: 2rem;
+  width: 60%;
 }
 
+.db-section {
+  background-color: #000;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 500px; /* Control the height to prevent overflow */
+  overflow-y: auto;  /* Enable vertical scrolling */
+}
+
+.db-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.db-table th,
+.db-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  word-wrap: break-word; /* Ensure long text wraps to the next line */
+}
+
+.db-table th {
+  font-weight: 600;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.db-table tr:hover {
+  background-color: var(--secondary-color);
+}
 
 .hamburger-menu {
-    font-size: 1.3rem;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    transition: all 2s ease-in-out;
-}
-
-.cd-logo {
-    width: 80px;
-    border-radius: 50%;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: var(--primary-color);
+  cursor: pointer;
 }
 
 .log-out-btn {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.log-out-btn:hover {
+  background-color: #ff4866;
+}
+
+/* For scrollable db-section with smooth transitions */
+.db-section::-webkit-scrollbar {
+  width: 10px;
+}
+
+.db-section::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+.db-section::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.slide-bottom{
+    text-align: center;
 }
