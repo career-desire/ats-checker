@@ -8,6 +8,7 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 function NavBar({ handleSuccess, isDark, setIsDark }) {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
+  // Logout function and it will clear all cache data
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('description');
@@ -21,12 +22,14 @@ function NavBar({ handleSuccess, isDark, setIsDark }) {
     handleSuccess("Logout successfully");
   };
 
+  // Change theme function
   const handleDarkMode = () => {
     const nextTheme = isDark === "true" ? "false" : "true";
     setIsDark(nextTheme);
     localStorage.setItem("dark", nextTheme);
   };
 
+  // Check cache theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("dark");
     if (savedTheme) {

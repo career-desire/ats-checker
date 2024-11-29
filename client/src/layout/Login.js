@@ -29,11 +29,9 @@ function Login({ handleLogin }) {
             autoComplete="current-password"
           />
         </div>
-        <button type="submit" className="btn">
-          Login
-        </button>
+        <button type="submit" className="btn">Login</button>
       </form>
-      <p>Don't have an account? <Link to="/register"><p>Register</p></Link></p>
+      <p>Don't have an account? <Link to="/register"><button className="btn">Register</button></Link></p>
     </div>
   );
 }

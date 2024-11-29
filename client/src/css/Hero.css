@@ -96,6 +96,10 @@
     background: #ffffff;
 }
 
+.resume-uploader p{
+    font-size: 0.6rem;
+}
+
 .description {
     display: flex;
     flex-direction: column;
@@ -119,6 +123,7 @@
         -3px -3px 15px #ffffff;
     scrollbar-width: none;
     outline: none;
+    resize: none;
 }
 
 .recent-data-section {
@@ -130,6 +135,7 @@
 
 .recent-data-section>input {
     padding: 20px;
+    cursor: pointer;
 }
 
 #dark-uploader-page {

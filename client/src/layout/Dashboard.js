@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
 import "../css/Dashboard.css";
-import cdLogo from "../assets/career_desire_logo.jpg";
 import { Link } from "react-router-dom";
 import dashboardImg from "../assets/dashboard-img.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

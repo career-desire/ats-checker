@@ -14,13 +14,11 @@ function Hero({
   handleSuccess,
   setLoading,
 }) {
-  const navigate = useNavigate(); // Hook for navigation
-  const fileInputRef = useRef(null); // Reference to the file input element
-  const [reportStatus, setReportStatus] = useState(true); // State for the uploaded file
-  const [description, setDescription] = useState(""); // Holds the job description
-  const [cachedescription, setCacheDescription] = useState(
-    localStorage.getItem("description") || ""
-  );
+  const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const [reportStatus, setReportStatus] = useState(true);
+  const [description, setDescription] = useState("");
+  const [cachedescription, setCacheDescription] = useState();
 
   // Define an array of loader reports to display
   const loaderReportArr = [
@@ -33,7 +31,7 @@ function Hero({
   // Toggle the use of recent description
   const handleRecentDescriptionToggle = (e) => {
     if (e.target.checked) {
-      setDescription(cachedescription); // Set description to recent one if checked
+      setDescription(cachedescription);
     } else {
       setDescription(""); // Clear description if not using recent
     }
@@ -41,42 +39,36 @@ function Hero({
 
   // Handle form submission
   const onSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-
-    const fileUploaded = fileInputRef.current.files.length > 0; // Check if file is uploaded
-    const descriptionProvided = description.trim().length > 0; // Check if description is provided
-
+    e.preventDefault();
+    
     // Navigate to the loader page and set loading to true
     navigate("/loader");
     setLoading(true);
+
+    const fileUploaded = fileInputRef.current.files.length > 0;
+    const descriptionProvided = description.trim().length > 0;
     
     // Validate file and description
     if (!fileUploaded || !descriptionProvided) {
       return handleError("Please provide a file and a description.");
+    } else {
+      handleSubmit(
+        navigate,
+        fileInputRef,
+        description,
+        handleError,
+        setDescription,
+        setLoading,
+        setReportStatus,
+        loaderReportArr,
+        reportStatus,
+        handleSuccess,
+        setLoaderReport
+      );
     }
-
-    handleSubmit(
-      navigate,
-      fileInputRef,
-      description,
-      handleError,
-      setDescription,
-      setLoading,
-      setReportStatus,
-      loaderReportArr,
-      reportStatus,
-      handleSuccess
-    );
-
-    // Iterate over the loader reports and display each one after a delay
-    loaderReportArr.forEach((report, i) => {
-      setTimeout(() => {
-        // Update the loader report state with the current report
-        setLoaderReport(report);
-      }, i * 4000); // Stagger the messages by 4 seconds each
-    });
   };
 
+  // Getting saved description from local storage
   useEffect(() => {
     const storedDescription = localStorage.getItem("description");
     if (storedDescription) {
@@ -107,11 +99,13 @@ function Hero({
               ref={fileInputRef}
               onChange={handleFileChange}
             />
+            <p>Max 5MB</p>
+            <p>Supported file format PDF, DOCX, DOC</p>
           </div>
           <div className="description">
             <h2>Add your job description</h2>
             <textarea
-              placeholder="Paste here"
+              placeholder="Paste you job description here"
               className="description-input"
               id={isDark === "true" ? "dark-description-input" : "light-theme"}
               minLength="100"

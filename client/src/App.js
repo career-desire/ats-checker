@@ -16,7 +16,7 @@ function App() {
   const [success, setSuccess] = useState(false); // Success message to show
   const [error, setError] = useState(false); // Error message to show
   const [isDark, setIsDark] = useState('true'); // For handle dark theme
-  const [LoaderReport, setLoaderReport] = useState('');
+  const [LoaderReport, setLoaderReport] = useState('Processing');
 
   // Retrieves JWT token from session storage
   const token = localStorage.getItem("token");

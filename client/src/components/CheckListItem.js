@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../css/Report.css"
 import Tick from "../assets/tick.png";
 import Wrong from "../assets/wrong.png";
@@ -6,13 +6,26 @@ import Wrong from "../assets/wrong.png";
 // Checklist Item Component with "See More" functionality
 const ChecklistItem = ({ label, value }) => {
   const [showMore, setShowMore] = useState(false);
+  const [className, setClassName] = useState(false);
 
   const toggleShowMore = () => setShowMore(!showMore);
+
+  useEffect(()=>{
+    if(label === "email"){
+      setClassName("checklist-box link")
+    } else if(label === "linkedIn") {
+      setClassName("checklist-box link")
+    } else if(label === "portfolio") {
+      setClassName("checklist-box link")
+    } else  {
+      setClassName("checklist-box")
+    }
+  },[label])
 
   return (
     <div className="checklist-item">
       <strong>{label}: {" "}{value && <img src={Tick} className="checklist-img" alt="tick" />}</strong>
-      <div className="checklist-box">
+      <div className={className ? className : "null"}>
         {value ? (
           <>
             {showMore ? (

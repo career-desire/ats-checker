@@ -6,30 +6,30 @@ import { useReactToPrint } from "react-to-print";
 import ChecklistItem from "../components/CheckListItem";
 
 function Report({ token, isDark }) {
-  const pdfPath = localStorage.getItem("resumePath");
+  // const pdfPath = localStorage.getItem("resumePath");
   const navigate = useNavigate();
 
   const [report, setReport] = useState({
     checkList: {
-      name: null,
-      jobRole: null,
-      number: null,
-      email: null,
-      linkedIn: null,
-      location: null,
-      portfolio: null,
-      summary: null,
-      awardsAndRecognition: null,
-      education: null,
-      projects: null,
-      certifications: null,
-      languagesKnown: null,
+      name: "",
+      jobRole: "",
+      number: "",
+      email: "",
+      linkedIn: "",
+      location: "",
+      portfolio: "",
+      summary: "",
+      awardsAndRecognition: "",
+      education: "",
+      projects: "",
+      certifications: "",
+      languagesKnown: "",
     },
     matchingDetails: {
       overallScore: 0,
-      readability: null,
+      readability: "",
       actionVerbsUsed: 0,
-      estimatedReadingTime: null,
+      estimatedReadingTime: "",
       keywordsMatched: [],
       keywordsMissing: [],
       skillsMatched: [],
@@ -46,10 +46,12 @@ function Report({ token, isDark }) {
   const [animatedScore, setAnimatedScore] = useState(0);
   const componentRef = useRef();
 
+  // Function to handle which page wants to print
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
+  // Getting  report data from local storage to display
   useEffect(() => {
     const storedReportData = localStorage.getItem("resumeReport");
     if (storedReportData && token) {
@@ -60,6 +62,7 @@ function Report({ token, isDark }) {
     }
   }, [token, navigate]);
 
+  //  Function to handle the score animation
   useEffect(() => {
     if (report.matchingDetails.overallScore > 0) {
       let score = 0;
@@ -71,7 +74,7 @@ function Report({ token, isDark }) {
           clearInterval(interval);
         }
       }, 40);
-      return () => clearInterval(interval); // Cleanup on unmount
+      return () => clearInterval(interval);
     }
   }, [report.matchingDetails.overallScore]);
 
@@ -127,30 +130,30 @@ function Report({ token, isDark }) {
               <h2>Suggestions (Enhance your resume by adding the following details)</h2>
               {report.matchingDetails.educationMissing && (
                 <p>
-                  <strong>Education:</strong>{" "}
+                  <strong>Include following Education:</strong>{" "}
                   <span>{report.matchingDetails.educationMissing}</span>
                 </p>
               )}
               {report.matchingDetails.experienceMissing && (
                 <p>
-                  <strong>Experience:</strong>{" "}
+                  <strong>Include following Experience:</strong>{" "}
                   <span>{report.matchingDetails.experienceMissing}</span>
                 </p>
               )}
               {report.matchingDetails.keywordsMissing && (
                 <p>
-                  <strong>Keywords:</strong>{" "}
+                  <strong>Include following Keywords:</strong>{" "}
                   <span>{report.matchingDetails.keywordsMissing}</span>
                 </p>
               )}
               {report.matchingDetails.skillsMissing && (
                 <p>
-                  <strong>Skills:</strong>{" "}
+                  <strong>Include following Skills:</strong>{" "}
                   <span>{report.matchingDetails.skillsMissing}</span>
                 </p>
               )}
               <p>
-                <strong>Suggestion:</strong>{" "}
+                <strong>Suggestions for optimization:</strong>{" "}
                 <span>
                   {report.suggestions.length > 0
                     ? report.suggestions
@@ -165,18 +168,18 @@ function Report({ token, isDark }) {
             <button className="btn">Recheck</button>
           </Link>
           <button className="btn" onClick={handlePrint}>
-            Save report
+            Download Report
           </button>
         </div>
       </aside>
-      <div className="embed-container">
+      {/* <div className="embed-container">
         <embed
           id="plugin"
           type="application/pdf"
           src={pdfPath}
           style={{ display: "block" }}
         />
-      </div>
+      </div> */}
     </section>
   );
 }

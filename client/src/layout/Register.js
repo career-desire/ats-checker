@@ -11,9 +11,9 @@ function Register({ handleSuccess, setError }) {
   const [password, setPassword] = useState('');
   const [mobile, setMobile] = useState('');
 
+  //  Handle register form submit and it will call the register api function whitch is in the api folder
   const handleSignup = (e)=>{
     e.preventDefault(); 
-  
     const signUpForm = {
       name: name.trim(),
       email: email.toLowerCase().trim(),

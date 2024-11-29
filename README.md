@@ -194,7 +194,7 @@
         listen 80;
         server_name api.example.com;
         location / {
-            proxy_pass http://35.35.5668.345:4000;  # Your Node.js app or other service
+            proxy_pass http://35.35.5668.345:4000;  # Your website localhost
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

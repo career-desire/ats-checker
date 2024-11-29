@@ -8,13 +8,12 @@
 }
 
 .report-sidebar {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding-right: 2.5rem;
     overflow: scroll;
     scrollbar-width: none;
 }
@@ -120,7 +119,7 @@
 
 .checklist-box {
     width: 230px;
-    min-height: 80px;
+    min-height: 90px;
     background-color: #1453A1;
     color: #ffffff;
     display: flex;
@@ -145,7 +144,6 @@
     border: none;
     cursor: pointer;
     font-size: 0.8rem;
-    margin-top: 0.5rem;
     position: absolute;
     bottom: 5px;
     right: 10px;
@@ -227,6 +225,10 @@
     margin: 1.5rem;
     scrollbar-width: none;
     background-color: transparent;
+}
+
+.link{
+    word-break: break-all;
 }
 
 @media screen and (max-width: 1000px) {

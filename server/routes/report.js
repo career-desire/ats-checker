@@ -47,7 +47,6 @@ router.post("/resume-report", upload.single("file"), async (req, res) => {
     );
 
     if (report.error) {
-      // console.log(report.error)
       return res.status(500).json({ error: report.error });
     }
 

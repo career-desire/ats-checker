@@ -32,6 +32,9 @@ app.use("/api", reportRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
+const HOST = '192.168.0.182';
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}/`);
+  console.log(`Server running at http://${HOST}:${PORT}/`);
 });

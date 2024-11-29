@@ -8,14 +8,17 @@ export const handleSubmit = async (
   setReportStatus,
   loaderReportArr,
   reportStatus,
-  handleSuccess
+  handleSuccess,
+  setLoaderReport
 ) => {
+  const token = localStorage.getItem("token");
   try {
     // Check if user is logged in
-    const token = localStorage.getItem("token");
-    if (!token) return navigate("/login");
-
-    // Get user ID from local storage
+    if (!token) {
+      handleError("Authentication failed")
+      return navigate("/login");
+    }
+    // Get user ID from local storage to store report in user database
     const userId = localStorage.getItem("userId");
 
     // Create form data for API request
@@ -37,6 +40,7 @@ export const handleSubmit = async (
     // Check if response is OK
     if (!response.ok) {
       const errorData = await response.json();
+      setReportStatus(false);
       return handleError(errorData.message || "Error submitting resume report");
     }
 
@@ -49,11 +53,9 @@ export const handleSubmit = async (
     // Compare with cached data
     if (
       result.extractedText.trim().toLowerCase() !==
-        cacheResume.trim().toLowerCase() ||
+      cacheResume.trim().toLowerCase() ||
       description.trim().toLowerCase() !== cacheDescription.trim().toLowerCase()
     ) {
-      console.log("new report");
-
       localStorage.setItem("resumeReport", JSON.stringify(result.report));
       localStorage.setItem("resume", result.extractedText);
       localStorage.setItem("description", description);
@@ -65,11 +67,24 @@ export const handleSubmit = async (
     navigate("/");
     handleError("Unfortunately report is not generated!");
   } finally {
-    if (reportStatus) {
+    if (reportStatus && token) {
+      // Iterate over the loader reports and display each one after a delay
+      loaderReportArr.forEach((report, i) => {
+        setTimeout(() => {
+          setLoaderReport(report);
+        }, i * 4000);
+      });
+
+      setLoaderReport("")
+
+      const pageLocation = window.location.href
+ 
       setTimeout(() => {
-        setLoading(false);
-        navigate("/report");
-        handleSuccess("Resume report is generated!");
+        if(pageLocation === "http://localhost:3000/loader"){
+          setLoading(false);
+          navigate("/report");
+          handleSuccess("Resume report is generated!");
+        }
       }, loaderReportArr.length * 4000); // Navigate after all reports
     }
     setDescription(" ");
