@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cyntler/react-doc-viewer": "^1.17.0",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",

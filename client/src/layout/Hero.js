@@ -18,7 +18,9 @@ function Hero({
   const fileInputRef = useRef(null);
   const [reportStatus, setReportStatus] = useState(true);
   const [description, setDescription] = useState("");
-  const [cachedescription, setCacheDescription] = useState();
+  const [cachedescription, setCacheDescription] = useState(
+    localStorage.getItem("description") || ""
+  );
 
   // Define an array of loader reports to display
   const loaderReportArr = [

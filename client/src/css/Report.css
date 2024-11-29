@@ -8,12 +8,13 @@
 }
 
 .report-sidebar {
-    width: 100%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    padding-right: 2.5rem;
     overflow: scroll;
     scrollbar-width: none;
 }

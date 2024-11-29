@@ -25,7 +25,7 @@ const ChecklistItem = ({ label, value }) => {
   return (
     <div className="checklist-item">
       <strong>{label}: {" "}{value && <img src={Tick} className="checklist-img" alt="tick" />}</strong>
-      <div className={className ? className : "null"}>
+      <div className={className}>
         {value ? (
           <>
             {showMore ? (

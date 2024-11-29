@@ -63,17 +63,12 @@ const generatePrompt = (resumeText, jobDescription) => {
 };
 
 export const processGenerativeAI = async (extractedText, description, userId) => {
-  let requestCount = 0;
   try {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-flash",
       generationConfig: { responseMimeType: "application/json" },
     });
-
-    // Increment the request counter
-    requestCount++;
-    console.log(`Request Count: ${requestCount}`);
 
     const prompt = generatePrompt(extractedText, description);
     const result = await model.generateContent(prompt);

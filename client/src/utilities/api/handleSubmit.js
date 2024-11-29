@@ -18,7 +18,7 @@ export const handleSubmit = async (
       handleError("Authentication failed")
       return navigate("/login");
     }
-    // Get user ID from local storage to store report in user database
+    // Get user ID from local storage
     const userId = localStorage.getItem("userId");
 
     // Create form data for API request
@@ -53,7 +53,7 @@ export const handleSubmit = async (
     // Compare with cached data
     if (
       result.extractedText.trim().toLowerCase() !==
-      cacheResume.trim().toLowerCase() ||
+        cacheResume.trim().toLowerCase() ||
       description.trim().toLowerCase() !== cacheDescription.trim().toLowerCase()
     ) {
       localStorage.setItem("resumeReport", JSON.stringify(result.report));
@@ -77,14 +77,10 @@ export const handleSubmit = async (
 
       setLoaderReport("")
 
-      const pageLocation = window.location.href
- 
       setTimeout(() => {
-        if(pageLocation === "http://localhost:3000/loader"){
-          setLoading(false);
-          navigate("/report");
-          handleSuccess("Resume report is generated!");
-        }
+        setLoading(false);
+        navigate("/report");
+        handleSuccess("Resume report is generated!");
       }, loaderReportArr.length * 4000); // Navigate after all reports
     }
     setDescription(" ");
