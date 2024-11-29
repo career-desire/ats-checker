@@ -1,4 +1,4 @@
-const { verifyToken } = require("../utils/jwtUtils");
+import verifyToken from "../utils/jwtUtils.js";
 
 const protectRoute = (req, res, next) => {
   // Extract the token from the Authorization header
@@ -24,4 +24,4 @@ const protectRoute = (req, res, next) => {
   }
 };
 
-module.exports = protectRoute;
+export default protectRoute;

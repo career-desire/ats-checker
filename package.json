@@ -12,15 +12,18 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/generative-ai": "^0.19.0",
     "animate.css": "^4.1.1",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "epub2": "^3.0.2",
+    "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
     "jszip": "^3.10.1",
+    "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
     "mammoth": "^1.8.0",
     "mime": "^4.0.4",
@@ -37,5 +40,6 @@
   "devDependencies": {
     "nodemon": "^3.1.4",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "type": "module"
 }
