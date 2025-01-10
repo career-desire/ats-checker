@@ -137,6 +137,11 @@
     padding: 20px;
 }
 
+.hero-btn-container{
+    display: flex;
+    gap: 1rem;
+}
+
 #dark-uploader-page {
     background-image: url(../assets/cool-background-dark.svg);
 }

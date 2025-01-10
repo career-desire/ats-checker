@@ -36,13 +36,9 @@ const generatePrompt = (resumeText, jobDescription) => {
         "languagesKnown": "Language 1, Language 2"
       },
       "matchingDetails": {
-        "keywordsMatched": "keywords from the resume that match the job description (e.g., frontend, problem-solving)",
         "keywordsMissing": "keywords mentioned in the job description but missing from the resume (e.g., frontend, problem-solving)",
-        "skillsMatched": "skills from the resume that match the job description (e.g., html, css)",
         "skillsMissing": "key skills mentioned in the job description but missing from the resume (e.g., html, css)",
-        "experienceMatched": "relevant experiences from the resume that match the job description requirements (e.g., frontend, webdevelopment)",
         "experienceMissing": "key experiences mentioned in the job description but missing from the resume (e.g., frontend, webdevelopment)",
-        "educationMatched": "Details of educational qualifications from the resume that match the job description (e.g., bca)",
         "educationMissing": "Details of educational qualifications required by the job description but missing from the resume (e.g., bca)",
         "overallScore": "A score out of 100 indicating how well the resume matches the job description not only in round numbers",
         "readability": "Readability grade of the resume (e.g., Excellent, Good, Fair, Poor)",

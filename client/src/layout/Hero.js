@@ -5,7 +5,7 @@ import "animate.css";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useNavigate } from "react-router-dom";
 import { handleSubmit } from "../utilities/api/handleSubmit";
-import { handleFileChange } from "../utilities/utilityFunction.js"
+import { handleFileChange } from "../utilities/utilityFunction.js";
 
 function Hero({
   handleError,
@@ -42,14 +42,14 @@ function Hero({
   // Handle form submission
   const onSubmit = (e) => {
     e.preventDefault();
-    
+
     // Navigate to the loader page and set loading to true
     navigate("/loader");
     setLoading(true);
 
     const fileUploaded = fileInputRef.current.files.length > 0;
     const descriptionProvided = description.trim().length > 0;
-    
+
     // Validate file and description
     if (!fileUploaded || !descriptionProvided) {
       return handleError("Please provide a file and a description.");
@@ -101,7 +101,7 @@ function Hero({
               ref={fileInputRef}
               onChange={handleFileChange}
             />
-            <p>Max 5MB</p>
+            <p>Max 1MB</p>
             <p>Supported file format PDF, DOCX, DOC</p>
           </div>
           <div className="description">
@@ -126,9 +126,9 @@ function Hero({
               />
             </div>
           ) : null}
-          <button type="submit" className="btn">
-            Get Result
-          </button>
+            <button type="submit" className="btn">
+              Get Result
+            </button>
         </div>
       </form>
       <div
