@@ -1,0 +1,38 @@
+.nav{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    background-color: #ffffff;
+    z-index: 10;
+}
+.cd-logo{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.cd-logo-img{
+    width: 2.5rem;
+    border-radius: 50%;
+}
+.nav-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+#dark-nav{
+    background-color: #1b1a1a;
+}
+#dark-nav h4{
+    color: #ffffff;
+}
+@media screen and (max-width: 600px) {
+    .cd-logo{
+        font-size: 0.8rem;
+    }
+}

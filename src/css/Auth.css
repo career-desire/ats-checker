@@ -1,0 +1,46 @@
+.auth-section {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.auth-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.auth-form>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form>div>input {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    outline: none;
+}
+
+.auth-form option,
+.auth-form select {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    outline: none;
+}
+
+.auth-section p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
