@@ -3,6 +3,38 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+    "@google/generative-ai": "^0.19.0",
+    "animate.css": "^4.1.1",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "epub2": "^3.0.2",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "jszip": "^3.10.1",
+    "jwt-decode": "^4.0.0",
+    "lodash": "^4.17.21",
+    "mammoth": "^1.8.0",
+    "mime": "^4.0.4",
+    "mongoose": "^8.5.4",
+    "multer": "^1.4.5-lts.1",
+    "papaparse": "^5.4.1",
+    "pdf-parse": "^1.1.1",
+    "textract": "^2.5.0",
+    "unzip": "^0.1.11",
+    "webpack": "^5.94.0",
+    "xlsx": "^0.18.5",
+    "xmldom": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "webpack-cli": "^5.1.4"
+  },
+  "type": "module"
+=======
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -61,4 +93,5 @@
       "last 1 safari version"
     ]
   }
+>>>>>>> 4093307e0d98b6649498ee03e036bb4cd6262b69
 }
